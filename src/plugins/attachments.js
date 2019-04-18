@@ -70,6 +70,11 @@ export const blobBufferUtil = {
         return blobBuffer;
     },
     toString(blobBuffer) {
+
+				if (blobBuffer instanceof Uint8Array) {
+					blobBuffer = new Buffer(blobBuffer)
+				}
+
         if (blobBuffer instanceof Buffer) {
             // node
             return nextTick()

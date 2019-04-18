@@ -77,7 +77,12 @@ var blobBufferUtil = {
     return blobBuffer;
   },
   toString: function toString(blobBuffer) {
-    if (blobBuffer instanceof Buffer) {
+
+		if (blobBuffer instanceof Uint8Array) {
+      blobBuffer = new Buffer(blobBuffer)
+    }
+
+		if (blobBuffer instanceof Buffer) {
       // node
       return (0, _util.nextTick)().then(function () {
         return blobBuffer.toString();
